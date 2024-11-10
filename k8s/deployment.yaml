@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cron-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cron-app
+  template:
+    metadata:
+      labels:
+        app: cron-app
+    spec:
+      securityContext:
+        runAsUser: 1000  # Assuming 1000 is the non-root user ID
+      containers:
+        - name: cron-container
+          image: prashant2020/tomcatsampleapp
+          securityContext:
+            readOnlyRootFilesystem: true  # Enable read-only root filesystem
+          volumeMounts:
+            - name: cronjobs
+              mountPath: /tmp/cronjobs
+      volumes:
+        - name: cronjobs
+          emptyDir: {}
