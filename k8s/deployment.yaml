@@ -20,8 +20,19 @@ spec:
           securityContext:
             readOnlyRootFilesystem: true  # Enable read-only root filesystem
           volumeMounts:
+            # Mount for Tomcat writable directory
+            - name: tomcat-dir
+              mountPath: /opt/tomcat
+            # Mount for cron jobs writable directory (e.g., for logs)
+            - name: cron-output
+              mountPath: /tmp/cron_output
+            # Mount for cron job scripts directory
             - name: cronjobs
               mountPath: /tmp/cronjobs
       volumes:
+        - name: tomcat-dir
+          emptyDir: {}  # Writable space for Tomcat
+        - name: cron-output
+          emptyDir: {}  # Writable space for cron job output
         - name: cronjobs
-          emptyDir: {}
+          emptyDir: {}  # Writable space for cron job scripts
