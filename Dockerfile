@@ -7,8 +7,8 @@ ARG GROUP_ID=1000
 RUN groupadd -g $GROUP_ID appuser && \
     useradd -m -u $USER_ID -g appuser -s /bin/bash appuser
 
-# Install necessary packages
-RUN microdnf install -y curl java-1.8.0-openjdk && \
+# Install necessary packages and Java 17
+RUN microdnf install -y curl java-17-openjdk && \
     microdnf clean all
 
 # Download and extract Tomcat 10
