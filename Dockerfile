@@ -13,7 +13,7 @@ RUN yum update -y && \
     yum clean all
 
 # Download and extract Tomcat 10
-ENV TOMCAT_VERSION=10.0.20
+ENV TOMCAT_VERSION=10.1.31
 RUN curl -L -o /tmp/apache-tomcat.tar.gz \
     https://downloads.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     tar xzf /tmp/apache-tomcat.tar.gz -C /opt && \
