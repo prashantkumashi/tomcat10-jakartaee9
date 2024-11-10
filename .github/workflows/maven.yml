@@ -32,7 +32,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker Image
-      run: docker build -t your-dockerhub-username/your-repo-name:latest .
+      run: docker build -t prashant2020/tomcatsampleapp:latest .
 
     - name: Push Docker Image
-      run: docker push your-dockerhub-username/your-repo-name:latest
+      run: docker push prashant2020/tomcatsampleapp:latest
