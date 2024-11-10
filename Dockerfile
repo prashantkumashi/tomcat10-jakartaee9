@@ -18,7 +18,8 @@ RUN curl -L -o /tmp/apache-tomcat.tar.gz \
     https://downloads.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     tar xzf /tmp/apache-tomcat.tar.gz -C /opt && \
     mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
-    rm /tmp/apache-tomcat.tar.gz
+    rm /tmp/apache-tomcat.tar.gz && \
+    chown -R appuser:appuser /opt/tomcat/
 
 # Set up environment variables
 ENV CATALINA_HOME /opt/tomcat
