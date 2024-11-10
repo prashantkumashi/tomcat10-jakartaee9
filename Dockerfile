@@ -31,6 +31,10 @@ RUN curl -L -o /usr/local/bin/supercronic \
 # Copy application code to webapps folder
 COPY --chown=appuser:appuser . $CATALINA_HOME/webapps/
 
+# Copy custom cron job script and cron job configuration
+COPY mycronjob.sh /usr/local/bin/mycronjob.sh
+RUN chmod +x /usr/local/bin/mycronjob.sh
+
 # Create a directory for cron jobs and copy the cron job file
 RUN mkdir -p /etc/cron.d && chown -R appuser:appuser /etc/cron.d
 COPY cronjobs /etc/cron.d/cronjobs
