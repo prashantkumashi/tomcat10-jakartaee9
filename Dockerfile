@@ -8,8 +8,9 @@ RUN groupadd -g $GROUP_ID appuser && \
     useradd -m -u $USER_ID -g appuser -s /bin/bash appuser
 
 # Install necessary packages and Java 17
-RUN microdnf install -y curl java-17-openjdk && \
-    microdnf clean all
+RUN yum update -y && \
+    yum install -y curl java-17-openjdk && \
+    yum clean all
 
 # Download and extract Tomcat 10
 ENV TOMCAT_VERSION=10.0.20
