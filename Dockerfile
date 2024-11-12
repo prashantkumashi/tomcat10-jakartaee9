@@ -43,7 +43,7 @@ RUN chmod 0644 /etc/cron.d/cronjobs && \
     ls -lrt $CATALINA_HOME/bin && \
     chmod 0755 $CATALINA_HOME/bin/catalina.sh && \
     chown -R appuser:appuser /opt/tomcat && \ 
-    ls -lrt $CATALINA_HOME/bin
+    ls -lrt /opt
 
 # Set permissions and change user to non-root
 USER appuser
