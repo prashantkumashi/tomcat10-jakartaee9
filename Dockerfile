@@ -18,8 +18,7 @@ RUN curl -L -o /tmp/apache-tomcat.tar.gz \
     https://downloads.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     tar xzf /tmp/apache-tomcat.tar.gz -C /opt && \
     mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
-    rm /tmp/apache-tomcat.tar.gz && \
-    chown -R appuser:appuser /opt/tomcat/
+    rm /tmp/apache-tomcat.tar.gz
 
 # Set up environment variables
 ENV CATALINA_HOME /opt/tomcat
@@ -40,7 +39,8 @@ RUN chmod +x /usr/local/bin/mycronjob.sh
 # Create a directory for cron jobs and copy the cron job file
 RUN mkdir -p /etc/cron.d && chown -R appuser:appuser /etc/cron.d
 COPY cronjobs /etc/cron.d/cronjobs
-RUN chmod 0644 /etc/cron.d/cronjobs
+RUN chmod 0644 /etc/cron.d/cronjobs && \
+    chown -R appuser:appuser /opt/tomcat
 
 # Set permissions and change user to non-root
 USER appuser
