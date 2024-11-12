@@ -40,6 +40,7 @@ RUN chmod +x /usr/local/bin/mycronjob.sh
 RUN mkdir -p /etc/cron.d && chown -R appuser:appuser /etc/cron.d
 COPY cronjobs /etc/cron.d/cronjobs
 RUN chmod 0644 /etc/cron.d/cronjobs && \
+    ls -lrt $CATALINA_HOME\bin && \
     chown -R appuser:appuser /opt/tomcat
 
 # Set permissions and change user to non-root
