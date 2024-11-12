@@ -22,7 +22,7 @@ spec:
           volumeMounts:
             # Mount for Tomcat writable directory
             - name: tomcat-dir
-              mountPath: /opt/tomcat
+              mountPath: /opt/tomcat/logs
             # Mount for cron jobs writable directory (e.g., for logs)
             - name: cron-output
               mountPath: /tmp/cron_output
