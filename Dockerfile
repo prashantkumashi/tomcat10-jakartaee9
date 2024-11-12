@@ -30,7 +30,7 @@ RUN curl -L -o /usr/local/bin/supercronic \
     chmod +x /usr/local/bin/supercronic
 
 # Copy application code to webapps folder
-RUN ls -lrt ./target
+RUN pwd && ls -lrtR . && ls -lrtR /home/runner 
 COPY --chown=appuser:appuser /home/runner/work/tomcat10-jakartaee9/tomcat10-jakartaee9/target/helloworld.war $CATALINA_HOME/webapps/helloworld.war
 
 # Copy custom cron job script and cron job configuration
