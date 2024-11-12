@@ -41,7 +41,7 @@ RUN mkdir -p /etc/cron.d && chown -R appuser:appuser /etc/cron.d
 COPY cronjobs /etc/cron.d/cronjobs
 RUN chmod 0644 /etc/cron.d/cronjobs && \
     ls -lrt $CATALINA_HOME/bin && \
-    chmod 0766 $CATALINA_HOME/bin/catalina.sh && \
+    chmod 0755 $CATALINA_HOME/bin/catalina.sh && \
     chown -R appuser:appuser /opt/tomcat && \ 
     ls -lrt $CATALINA_HOME/bin
 
