@@ -21,6 +21,8 @@ spec:
             readOnlyRootFilesystem: true  # Enable read-only root filesystem
           volumeMounts:
             # Mount for Tomcat writable directory
+            - name: tomcat-workdir
+              mountPath: /opt/tomcat/work
             - name: tomcat-dir
               mountPath: /opt/tomcat/logs
             # Mount for cron jobs writable directory (e.g., for logs)
@@ -30,6 +32,8 @@ spec:
             - name: cronjobs
               mountPath: /tmp/cronjobs
       volumes:
+        - name: tomcat-workdir
+          emptyDir: {}  # Writable space for Tomcat
         - name: tomcat-dir
           emptyDir: {}  # Writable space for Tomcat
         - name: cron-output
