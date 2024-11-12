@@ -30,7 +30,8 @@ RUN curl -L -o /usr/local/bin/supercronic \
     chmod +x /usr/local/bin/supercronic
 
 # Copy application code to webapps folder
-COPY --chown=appuser:appuser . $CATALINA_HOME/webapps/
+RUN ls -lrt ./target
+COPY --chown=appuser:appuser ./target/*.war $CATALINA_HOME/webapps/app.war
 
 # Copy custom cron job script and cron job configuration
 COPY mycronjob.sh /usr/local/bin/mycronjob.sh
